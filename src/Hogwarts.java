@@ -5,8 +5,8 @@ public class Hogwarts {
     private int magicPower;
     private int transgressionDistance;
 
-    static private int MIX_PROP_VAL = 0;
-    static private int MAX_PROP_VAL = 100;
+    static private final int MIX_PROP_VAL = 0;
+    static private final int MAX_PROP_VAL = 100;
 
     static protected boolean checkVal(int val){
         return val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL;
