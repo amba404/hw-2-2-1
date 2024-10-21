@@ -5,6 +5,13 @@ public class Hogwarts {
     private int magicPower;
     private int transgressionDistance;
 
+    static private int MIX_PROP_VAL = 0;
+    static private int MAX_PROP_VAL = 100;
+
+    static protected boolean checkVal(int val){
+        return val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL;
+    }
+
     public Hogwarts(@NotNull String name, int magicPower, int transgressionDistance) {
         if (name.isBlank()) throw new IllegalArgumentException("Имя указано неверно");
         this.name = name;
@@ -55,7 +62,7 @@ public class Hogwarts {
             res.append(" обладает");
             if (cmpMagic > 0) {
                 res.append(cmpMagic == 1 ? " бОльшей" : " меньшей");
-                res.append(" магическиой силой");
+                res.append(" магической силой");
             }
 
             if (cmpMagic != 0 & cmpTransDist != 0) {
