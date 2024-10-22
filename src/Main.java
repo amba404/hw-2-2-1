@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 
 public class Main {
@@ -75,7 +77,7 @@ public class Main {
 
     }
 
-    private static <T extends Hogwarts> void testCompareArray(T[] arr) {
+    private static <T extends Hogwarts> void testCompareArray(T @NotNull [] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
                 if (i == j) continue;
@@ -85,7 +87,7 @@ public class Main {
         }
     }
 
-    private static <T1 extends Hogwarts, T2 extends Hogwarts> void testCompare(T1 a, T2 b) {
+    private static <T1 extends Hogwarts, T2 extends Hogwarts> void testCompare(@NotNull T1 a, @NotNull T2 b) {
         System.out.println();
         System.out.println("a = " + a);
         System.out.println("b = " + b);
