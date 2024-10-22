@@ -8,7 +8,7 @@ public class Hogwarts {
     static private final int MIX_PROP_VAL = 0;
     static private final int MAX_PROP_VAL = 100;
 
-    static protected boolean checkVal(int val){
+    static protected boolean isCorrectPropVal(int val){
         return val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL;
     }
 
@@ -37,7 +37,7 @@ public class Hogwarts {
     }
 
     public void setTransgressionDistance(int transgressionDistance) {
-        if (transgressionDistance < 0) throw new IllegalArgumentException("Расстояние трансгрессии указано неверно");
+        if (transgressionDistance < 0) throw new IllegalArgumentException("Дистанция трансгрессии указана неверно");
         this.transgressionDistance = transgressionDistance;
     }
 

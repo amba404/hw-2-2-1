@@ -25,7 +25,7 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setNobility(int nobility) {
-        if (!checkVal(nobility)) throw new IllegalArgumentException("Значение nobility не верно");
+        if (!isCorrectPropVal(nobility)) throw new IllegalArgumentException("Значение nobility не верно");
         this.nobility = nobility;
     }
 
@@ -34,7 +34,7 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setHonor(int honor) {
-        if (!checkVal(honor)) throw new IllegalArgumentException("Значение honor не верно");
+        if (!isCorrectPropVal(honor)) throw new IllegalArgumentException("Значение honor не верно");
         this.honor = honor;
     }
 
@@ -43,7 +43,7 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setBravery(int bravery) {
-        if (!checkVal(bravery)) throw new IllegalArgumentException("Значение bravery не верно");
+        if (!isCorrectPropVal(bravery)) throw new IllegalArgumentException("Значение bravery не верно");
         this.bravery = bravery;
     }
 

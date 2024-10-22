@@ -31,7 +31,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setCunning(int cunning) {
-        if (!checkVal(cunning)) throw new IllegalArgumentException("Значение cunning не верно");
+        if (!isCorrectPropVal(cunning)) throw new IllegalArgumentException("Значение cunning не верно");
         this.cunning = cunning;
     }
 
@@ -40,7 +40,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setDetermination(int determination) {
-        if (!checkVal(determination)) throw new IllegalArgumentException("Значение determination не верно");
+        if (!isCorrectPropVal(determination)) throw new IllegalArgumentException("Значение determination не верно");
         this.determination = determination;
     }
 
@@ -49,7 +49,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setAmbition(int ambition) {
-        if (!checkVal(ambition)) throw new IllegalArgumentException("Значение ambition не верно");
+        if (!isCorrectPropVal(ambition)) throw new IllegalArgumentException("Значение ambition не верно");
         this.ambition = ambition;
     }
 
@@ -58,7 +58,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setResourcefulness(int resourcefulness) {
-        if (!checkVal(resourcefulness)) throw new IllegalArgumentException("Значение resourcefulness не верно");
+        if (!isCorrectPropVal(resourcefulness)) throw new IllegalArgumentException("Значение resourcefulness не верно");
         this.resourcefulness = resourcefulness;
     }
 
@@ -67,7 +67,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setLustForPower(int lustForPower) {
-        if (!checkVal(lustForPower)) throw new IllegalArgumentException("Значение lustForPower не верно");
+        if (!isCorrectPropVal(lustForPower)) throw new IllegalArgumentException("Значение lustForPower не верно");
         this.lustForPower = lustForPower;
     }
 

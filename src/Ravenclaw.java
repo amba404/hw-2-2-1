@@ -28,7 +28,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setIntelligence(int intelligence) {
-        if (!checkVal(intelligence)) throw new IllegalArgumentException("Значение intelligence не верно");
+        if (!isCorrectPropVal(intelligence)) throw new IllegalArgumentException("Значение intelligence не верно");
         this.intelligence = intelligence;
     }
 
@@ -37,7 +37,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setWisdom(int wisdom) {
-        if (!checkVal(wisdom)) throw new IllegalArgumentException("Значение wisdom не верно");
+        if (!isCorrectPropVal(wisdom)) throw new IllegalArgumentException("Значение wisdom не верно");
         this.wisdom = wisdom;
     }
 
@@ -46,7 +46,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setWit(int wit) {
-        if (!checkVal(wit)) throw new IllegalArgumentException("Значение wit не верно");
+        if (!isCorrectPropVal(wit)) throw new IllegalArgumentException("Значение wit не верно");
         this.wit = wit;
     }
 
@@ -55,7 +55,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setCreativity(int creativity) {
-        if (!checkVal(creativity)) throw new IllegalArgumentException("Значение creativity не верно");
+        if (!isCorrectPropVal(creativity)) throw new IllegalArgumentException("Значение creativity не верно");
         this.creativity = creativity;
     }
 

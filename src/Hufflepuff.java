@@ -25,7 +25,7 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setDiligence(int diligence) {
-        if (!checkVal(diligence)) throw new IllegalArgumentException("Значение diligence не верно");
+        if (!isCorrectPropVal(diligence)) throw new IllegalArgumentException("Значение diligence не верно");
         this.diligence = diligence;
     }
 
@@ -34,7 +34,7 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setLoyalty(int loyalty) {
-        if (!checkVal(loyalty)) throw new IllegalArgumentException("Значение loyalty не верно");
+        if (!isCorrectPropVal(loyalty)) throw new IllegalArgumentException("Значение loyalty не верно");
         this.loyalty = loyalty;
     }
 
@@ -43,7 +43,7 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setHonesty(int honesty) {
-        if (!checkVal(honesty)) throw new IllegalArgumentException("Значение honesty не верно");
+        if (!isCorrectPropVal(honesty)) throw new IllegalArgumentException("Значение honesty не верно");
         this.honesty = honesty;
     }
 
