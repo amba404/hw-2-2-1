@@ -10,7 +10,6 @@ public class Main {
                 new Gryffindor("Рон Уизли", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
         };
 
-//        testCompare(studentsG);
         for (int i = 0; i < studentsG.length; i++) {
             for (int j = 0; j < studentsG.length; j++) {
                 if (i == j) continue;
@@ -43,9 +42,10 @@ public class Main {
                 new Ravenclaw("Падма Патил", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
                 new Ravenclaw("Маркус Белби", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
         };
-        
+
         for (int i = 0; i < studentsR.length; i++) {
             for (int j = 0; j < studentsR.length; j++) {
+
                 if (i == j) continue;
                 Ravenclaw a = studentsR[i], b = studentsR[j];
                 System.out.println("a = " + a);
@@ -54,17 +54,46 @@ public class Main {
             }
         }
 
-    }
+        Slytherin[] studentsS = {
+                new Slytherin("Драко Малфой", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
+                new Slytherin("Грэхэм Монтегю", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
+                new Slytherin("Грегори Гойл", r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101), r.nextInt(101)),
+        };
 
-    private static <T extends Hogwarts> void testCompare(T[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+        for (int i = 0; i < studentsS.length; i++) {
+            for (int j = 0; j < studentsS.length; j++) {
                 if (i == j) continue;
-                T a = arr[i], b = arr[j];
+                Slytherin a = studentsS[i], b = studentsS[j];
                 System.out.println("a = " + a);
                 System.out.println("b = " + b);
                 a.printCompare(b);
             }
         }
+
+        testCompare(studentsG[0], studentsS[0]);
+        testCompareArray(studentsG);
+
+    }
+
+    private static <T extends Hogwarts> void testCompareArray(T[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i == j) continue;
+                T a = arr[i], b = arr[j];
+                testCompare(a, b);
+            }
+        }
+    }
+
+    private static <T1 extends Hogwarts, T2 extends Hogwarts> void testCompare(T1 a, T2 b) {
+        System.out.println();
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        /*
+        несмотря на то, что в метод переданы объекты одного класса, напр. Gryffindor,
+        вызывается Hogwarts.printCompare(Hogwarts), а не Gryffindor.printCompare(Gryffindor).
+        WTF?
+         */
+        a.printCompare(b);
     }
 }
