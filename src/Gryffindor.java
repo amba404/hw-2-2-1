@@ -49,13 +49,13 @@ public class Gryffindor extends Hogwarts {
 
     public void printCompare(@NotNull Gryffindor student) {
         Gryffindor a = this, b = student;
-        int sumA = a.getNobility()+a.getHonor()+a.getBravery();
-        int sumB = b.getNobility()+b.getHonor()+b.getBravery();
+        int sumA = a.getNobility() + a.getHonor() + a.getBravery();
+        int sumB = b.getNobility() + b.getHonor() + b.getBravery();
         StringBuilder res = new StringBuilder(a.getName());
 
-        if(sumA>sumB){
+        if (sumA > sumB) {
             res.append(" лучший Гриффиндорец, чем ");
-        } else if (sumA<sumB) {
+        } else if (sumA < sumB) {
             res.append(" худший Гриффиндорец, чем ");
         } else {
             res.append(" такой же Гриффиндорец, как и ");
