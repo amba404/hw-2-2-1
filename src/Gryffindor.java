@@ -5,19 +5,19 @@ public class Gryffindor extends Hogwarts {
     private int honor;
     private int bravery;
 
+    public Gryffindor(@NotNull String name, int magicPower, int transgressionDistance, int nobility, int honor, int bravery) {
+        super(name, magicPower, transgressionDistance);
+        this.setNobility(nobility);
+        this.setHonor(honor);
+        this.setBravery(bravery);
+    }
+
     @Override
     public String toString() {
         return super.toString() +
                 ", nobility=" + nobility +
                 ", honor=" + honor +
                 ", bravery=" + bravery;
-    }
-
-    public Gryffindor(@NotNull String name, int magicPower, int transgressionDistance, int nobility, int honor, int bravery) {
-        super(name, magicPower, transgressionDistance);
-        this.setNobility(nobility);
-        this.setHonor(honor);
-        this.setBravery(bravery);
     }
 
     public int getNobility() {
@@ -49,7 +49,7 @@ public class Gryffindor extends Hogwarts {
 
     @Override
     public void printCompare(@NotNull Hogwarts student) {
-        if (getClass() != student.getClass()) {
+        if (!getClass().equals(student.getClass())) {
             super.printCompare(student);
             return;
         }

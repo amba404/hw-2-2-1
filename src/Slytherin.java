@@ -73,7 +73,7 @@ public class Slytherin extends Hogwarts {
 
     @Override
     public void printCompare(@NotNull Hogwarts student) {
-        if (getClass() != student.getClass()) {
+        if (!getClass().equals(student.getClass())) {
             super.printCompare(student);
             return;
         }

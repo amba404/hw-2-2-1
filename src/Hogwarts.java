@@ -1,16 +1,11 @@
 import org.jetbrains.annotations.NotNull;
 
-public class Hogwarts {
+public abstract class Hogwarts {
+    static private final int MIX_PROP_VAL = 0;
+    static private final int MAX_PROP_VAL = 100;
     private final String name;
     private int magicPower;
     private int transgressionDistance;
-
-    static private final int MIX_PROP_VAL = 0;
-    static private final int MAX_PROP_VAL = 100;
-
-    static protected boolean isWrongPropVal(int val){
-        return !(val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL);
-    }
 
     public Hogwarts(@NotNull String name, int magicPower, int transgressionDistance) {
         if (name.isBlank()) throw new IllegalArgumentException("Имя указано неверно");
@@ -19,39 +14,20 @@ public class Hogwarts {
         this.setTransgressionDistance(transgressionDistance);
     }
 
-    public String getName() {
-        return name;
+    static protected boolean isWrongPropVal(int val) {
+        return !(val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL);
     }
 
-    public int getMagicPower() {
-        return magicPower;
-    }
+    public static void printCompareHogwarts(@NotNull Hogwarts a, @NotNull Hogwarts b) {
+        StringBuilder res = new StringBuilder(a.getName());
 
-    public void setMagicPower(int magicPower) {
-        if (magicPower < 0) throw new IllegalArgumentException("Сила магии указана неверно");
-        this.magicPower = magicPower;
-    }
+        int magicPower1 = a.getMagicPower();
+        int magicPower2 = b.getMagicPower();
+        int transDist1 = a.getTransgressionDistance();
+        int transDist2 = b.getTransgressionDistance();
 
-    public int getTransgressionDistance() {
-        return transgressionDistance;
-    }
-
-    public void setTransgressionDistance(int transgressionDistance) {
-        if (transgressionDistance < 0) throw new IllegalArgumentException("Дистанция трансгрессии указана неверно");
-        this.transgressionDistance = transgressionDistance;
-    }
-
-    public void printCompare(@NotNull Hogwarts student)
-    {
-        StringBuilder res = new StringBuilder(getName());
-
-        int magicPower1 = this.getMagicPower();
-        int magicPower2 = student.getMagicPower();
-        int transDist1 = this.getTransgressionDistance();
-        int transDist2 = student.getTransgressionDistance();
-
-        int cmpMagic = magicPower1 > magicPower2 ? 1 :  magicPower1 < magicPower2 ? 2 : 0;
-        int cmpTransDist = transDist1 > transDist2 ? 1 :  transDist1 < transDist2 ? 2 : 0;
+        int cmpMagic = magicPower1 > magicPower2 ? 1 : magicPower1 < magicPower2 ? 2 : 0;
+        int cmpTransDist = transDist1 > transDist2 ? 1 : transDist1 < transDist2 ? 2 : 0;
 
         if (cmpMagic == 0 & cmpTransDist == 0) {
             res.append(" ни хуже, ни лучше");
@@ -77,9 +53,35 @@ public class Hogwarts {
 
         }
 
-        res.append(", чем ").append(student.getName());
+        res.append(", чем ").append(b.getName());
 
         System.out.println(res);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMagicPower() {
+        return magicPower;
+    }
+
+    public void setMagicPower(int magicPower) {
+        if (magicPower < 0) throw new IllegalArgumentException("Сила магии указана неверно");
+        this.magicPower = magicPower;
+    }
+
+    public int getTransgressionDistance() {
+        return transgressionDistance;
+    }
+
+    public void setTransgressionDistance(int transgressionDistance) {
+        if (transgressionDistance < 0) throw new IllegalArgumentException("Дистанция трансгрессии указана неверно");
+        this.transgressionDistance = transgressionDistance;
+    }
+
+    public void printCompare(@NotNull Hogwarts student) {
+        printCompareHogwarts(this, student);
     }
 
     @Override
