@@ -31,7 +31,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setCunning(int cunning) {
-        if (!isCorrectPropVal(cunning)) throw new IllegalArgumentException("Значение cunning не верно");
+        if (isWrongPropVal(cunning)) throw new IllegalArgumentException("Значение cunning не верно");
         this.cunning = cunning;
     }
 
@@ -40,7 +40,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setDetermination(int determination) {
-        if (!isCorrectPropVal(determination)) throw new IllegalArgumentException("Значение determination не верно");
+        if (isWrongPropVal(determination)) throw new IllegalArgumentException("Значение determination не верно");
         this.determination = determination;
     }
 
@@ -49,7 +49,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setAmbition(int ambition) {
-        if (!isCorrectPropVal(ambition)) throw new IllegalArgumentException("Значение ambition не верно");
+        if (isWrongPropVal(ambition)) throw new IllegalArgumentException("Значение ambition не верно");
         this.ambition = ambition;
     }
 
@@ -58,7 +58,7 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setResourcefulness(int resourcefulness) {
-        if (!isCorrectPropVal(resourcefulness)) throw new IllegalArgumentException("Значение resourcefulness не верно");
+        if (isWrongPropVal(resourcefulness)) throw new IllegalArgumentException("Значение resourcefulness не верно");
         this.resourcefulness = resourcefulness;
     }
 
@@ -67,12 +67,17 @@ public class Slytherin extends Hogwarts {
     }
 
     public void setLustForPower(int lustForPower) {
-        if (!isCorrectPropVal(lustForPower)) throw new IllegalArgumentException("Значение lustForPower не верно");
+        if (isWrongPropVal(lustForPower)) throw new IllegalArgumentException("Значение lustForPower не верно");
         this.lustForPower = lustForPower;
     }
 
-    public void printCompare(@NotNull Slytherin student) {
-        Slytherin a = this, b = student;
+    @Override
+    public void printCompare(@NotNull Hogwarts student) {
+        if (getClass() != student.getClass()) {
+            super.printCompare(student);
+            return;
+        }
+        Slytherin a = this, b = (Slytherin) student;
         int sumA = a.getCunning() + a.getDetermination() + a.getAmbition() + a.getResourcefulness() + a.getLustForPower();
         int sumB = b.getCunning() + b.getDetermination() + b.getAmbition() + b.getResourcefulness() + b.getLustForPower();
         StringBuilder res = new StringBuilder(a.getName());

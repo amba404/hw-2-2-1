@@ -8,8 +8,8 @@ public class Hogwarts {
     static private final int MIX_PROP_VAL = 0;
     static private final int MAX_PROP_VAL = 100;
 
-    static protected boolean isCorrectPropVal(int val){
-        return val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL;
+    static protected boolean isWrongPropVal(int val){
+        return !(val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL);
     }
 
     public Hogwarts(@NotNull String name, int magicPower, int transgressionDistance) {
@@ -41,7 +41,8 @@ public class Hogwarts {
         this.transgressionDistance = transgressionDistance;
     }
 
-    public void printCompare(@NotNull Hogwarts student) {
+    public void printCompare(@NotNull Hogwarts student)
+    {
         StringBuilder res = new StringBuilder(getName());
 
         int magicPower1 = this.getMagicPower();

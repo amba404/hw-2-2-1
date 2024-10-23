@@ -25,7 +25,7 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setNobility(int nobility) {
-        if (!isCorrectPropVal(nobility)) throw new IllegalArgumentException("Значение nobility не верно");
+        if (isWrongPropVal(nobility)) throw new IllegalArgumentException("Значение nobility не верно");
         this.nobility = nobility;
     }
 
@@ -34,7 +34,7 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setHonor(int honor) {
-        if (!isCorrectPropVal(honor)) throw new IllegalArgumentException("Значение honor не верно");
+        if (isWrongPropVal(honor)) throw new IllegalArgumentException("Значение honor не верно");
         this.honor = honor;
     }
 
@@ -43,12 +43,17 @@ public class Gryffindor extends Hogwarts {
     }
 
     public void setBravery(int bravery) {
-        if (!isCorrectPropVal(bravery)) throw new IllegalArgumentException("Значение bravery не верно");
+        if (isWrongPropVal(bravery)) throw new IllegalArgumentException("Значение bravery не верно");
         this.bravery = bravery;
     }
 
-    public void printCompare(@NotNull Gryffindor student) {
-        Gryffindor a = this, b = student;
+    @Override
+    public void printCompare(@NotNull Hogwarts student) {
+        if (getClass() != student.getClass()) {
+            super.printCompare(student);
+            return;
+        }
+        Gryffindor a = this, b = (Gryffindor) student;
         int sumA = a.getNobility() + a.getHonor() + a.getBravery();
         int sumB = b.getNobility() + b.getHonor() + b.getBravery();
         StringBuilder res = new StringBuilder(a.getName());

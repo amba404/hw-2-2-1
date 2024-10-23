@@ -5,6 +5,13 @@ public class Hufflepuff extends Hogwarts {
     private int loyalty;
     private int honesty;
 
+    public Hufflepuff(@NotNull String name, int magicPower, int transgressionDistance, int diligence, int loyalty, int honesty) {
+        super(name, magicPower, transgressionDistance);
+        this.setDiligence(diligence);
+        this.setLoyalty(loyalty);
+        this.setHonesty(honesty);
+    }
+
     @Override
     public String toString() {
         return super.toString() +
@@ -13,19 +20,12 @@ public class Hufflepuff extends Hogwarts {
                 ", honesty=" + honesty;
     }
 
-    public Hufflepuff(@NotNull String name, int magicPower, int transgressionDistance, int diligence, int loyalty, int honesty) {
-        super(name, magicPower, transgressionDistance);
-        this.setDiligence(diligence);
-        this.setLoyalty(loyalty);
-        this.setHonesty(honesty);
-    }
-
     public int getDiligence() {
         return diligence;
     }
 
     public void setDiligence(int diligence) {
-        if (!isCorrectPropVal(diligence)) throw new IllegalArgumentException("Значение diligence не верно");
+        if (isWrongPropVal(diligence)) throw new IllegalArgumentException("Значение diligence не верно");
         this.diligence = diligence;
     }
 
@@ -34,7 +34,7 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setLoyalty(int loyalty) {
-        if (!isCorrectPropVal(loyalty)) throw new IllegalArgumentException("Значение loyalty не верно");
+        if (isWrongPropVal(loyalty)) throw new IllegalArgumentException("Значение loyalty не верно");
         this.loyalty = loyalty;
     }
 
@@ -43,12 +43,17 @@ public class Hufflepuff extends Hogwarts {
     }
 
     public void setHonesty(int honesty) {
-        if (!isCorrectPropVal(honesty)) throw new IllegalArgumentException("Значение honesty не верно");
+        if (isWrongPropVal(honesty)) throw new IllegalArgumentException("Значение honesty не верно");
         this.honesty = honesty;
     }
 
-    public void printCompare(@NotNull Hufflepuff student) {
-        Hufflepuff a = this, b = student;
+    @Override
+    public void printCompare(@NotNull Hogwarts student) {
+        if (getClass() != student.getClass()) {
+            super.printCompare(student);
+            return;
+        }
+        Hufflepuff a = this, b = (Hufflepuff) student;
         int sumA = a.getDiligence() + a.getLoyalty() + a.getHonesty();
         int sumB = b.getDiligence() + b.getLoyalty() + b.getHonesty();
         StringBuilder res = new StringBuilder(a.getName());

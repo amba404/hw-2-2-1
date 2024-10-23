@@ -6,6 +6,14 @@ public class Ravenclaw extends Hogwarts {
     private int wit;
     private int creativity;
 
+    public Ravenclaw(@NotNull String name, int magicPower, int transgressionDistance, int intelligence, int wisdom, int wit, int creativity) {
+        super(name, magicPower, transgressionDistance);
+        this.setIntelligence(intelligence);
+        this.setWisdom(wisdom);
+        this.setWit(wit);
+        this.setCreativity(creativity);
+    }
+
     @Override
     public String toString() {
         return super.toString() +
@@ -15,20 +23,12 @@ public class Ravenclaw extends Hogwarts {
                 ", creativity=" + creativity;
     }
 
-    public Ravenclaw(@NotNull String name, int magicPower, int transgressionDistance, int intelligence, int wisdom, int wit, int creativity) {
-        super(name, magicPower, transgressionDistance);
-        this.setIntelligence(intelligence);
-        this.setWisdom(wisdom);
-        this.setWit(wit);
-        this.setCreativity(creativity);
-    }
-
     public int getIntelligence() {
         return intelligence;
     }
 
     public void setIntelligence(int intelligence) {
-        if (!isCorrectPropVal(intelligence)) throw new IllegalArgumentException("Значение intelligence не верно");
+        if (isWrongPropVal(intelligence)) throw new IllegalArgumentException("Значение intelligence не верно");
         this.intelligence = intelligence;
     }
 
@@ -37,7 +37,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setWisdom(int wisdom) {
-        if (!isCorrectPropVal(wisdom)) throw new IllegalArgumentException("Значение wisdom не верно");
+        if (isWrongPropVal(wisdom)) throw new IllegalArgumentException("Значение wisdom не верно");
         this.wisdom = wisdom;
     }
 
@@ -46,7 +46,7 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setWit(int wit) {
-        if (!isCorrectPropVal(wit)) throw new IllegalArgumentException("Значение wit не верно");
+        if (isWrongPropVal(wit)) throw new IllegalArgumentException("Значение wit не верно");
         this.wit = wit;
     }
 
@@ -55,12 +55,17 @@ public class Ravenclaw extends Hogwarts {
     }
 
     public void setCreativity(int creativity) {
-        if (!isCorrectPropVal(creativity)) throw new IllegalArgumentException("Значение creativity не верно");
+        if (isWrongPropVal(creativity)) throw new IllegalArgumentException("Значение creativity не верно");
         this.creativity = creativity;
     }
 
-    public void printCompare(@NotNull Ravenclaw student) {
-        Ravenclaw a = this, b = student;
+    @Override
+    public void printCompare(@NotNull Hogwarts student) {
+        if (getClass() != student.getClass()) {
+            super.printCompare(student);
+            return;
+        }
+        Ravenclaw a = this, b = (Ravenclaw) student;
         int sumA = a.getIntelligence() + a.getWisdom() + a.getWit() + a.getCreativity();
         int sumB = b.getIntelligence() + b.getWisdom() + b.getWit() + b.getCreativity();
         StringBuilder res = new StringBuilder(a.getName());
