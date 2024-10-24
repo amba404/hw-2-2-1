@@ -15,7 +15,7 @@ public abstract class Hogwarts {
     }
 
     static protected boolean isWrongPropVal(int val) {
-        return !(val >= Hogwarts.MIX_PROP_VAL & val <= Hogwarts.MAX_PROP_VAL);
+        return (val > Hogwarts.MAX_PROP_VAL || val < Hogwarts.MIX_PROP_VAL);
     }
 
     public static void printCompareHogwarts(@NotNull Hogwarts a, @NotNull Hogwarts b) {
